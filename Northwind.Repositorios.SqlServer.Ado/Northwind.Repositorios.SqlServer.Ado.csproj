@@ -46,6 +46,7 @@
     <Compile Include="ProdutoRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioBase.cs" />
+    <Compile Include="RepositorioListBase.cs" />
     <Compile Include="TransportadoraRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
