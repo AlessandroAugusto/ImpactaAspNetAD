@@ -7,13 +7,13 @@ using System.Data.SqlClient;
 
 namespace Northwind.Repositorios.SqlServer.Ado
 {
-    public class RepositorioListBase
+    public abstract class RepositorioListBase
     {
         private string _stringConexao = ConfigurationManager.ConnectionStrings["northwindConnectionString"].ConnectionString;
 
-        public delegate Transportadora MapearDelegate(SqlDataReader registro);
+        protected delegate T MapearDelegate<T>(SqlDataReader registro);
 
-        public void ExecuteNonQuery(string nomeProcedure, params SqlParameter[] parametros)
+        protected void ExecuteNonQuery(string nomeProcedure, params SqlParameter[] parametros)
         {
             using (var conexao = new SqlConnection(_stringConexao))
             {
@@ -31,7 +31,7 @@ namespace Northwind.Repositorios.SqlServer.Ado
             }
         }
 
-        public object ExecuteScalar(string nomeProcedure, params SqlParameter[] parametros)
+        protected object ExecuteScalar(string nomeProcedure, params SqlParameter[] parametros)
         {
             using (var conexao = new SqlConnection(_stringConexao))
             {
@@ -51,9 +51,9 @@ namespace Northwind.Repositorios.SqlServer.Ado
             }
         }
 
-        public List<Transportadora> ExecuteReader(String nomeProcedure, MapearDelegate metodoMapeamento, params SqlParameter[] parametros)
+        protected List<T> ExecuteReader<T>(String nomeProcedure, MapearDelegate<T> metodoMapeamento, params SqlParameter[] parametros)
         {
-            var transportadoras = new List<Transportadora>();
+            var lista = new List<T>();
 
             using (var conexao = new SqlConnection(_stringConexao))
             {
@@ -72,12 +72,12 @@ namespace Northwind.Repositorios.SqlServer.Ado
                     {
                         while (registro.Read())
                         {
-                            transportadoras.Add(metodoMapeamento(registro));
+                            lista.Add(metodoMapeamento(registro));
                         }
                     }
                 }
             }
-            return transportadoras;
+            return lista;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Northwind.Repositorios.SqlServer.Ado
 {
@@ -19,28 +20,7 @@ namespace Northwind.Repositorios.SqlServer.Ado
 
         public Transportadora Selecionar(int id)
         {
-            Transportadora transportadora = null;
-
-            using (var conexao = new SqlConnection(_stringConexao))
-            {
-                conexao.Open();
-
-                using (var comando = new SqlCommand("TransportadoraSelecionar", conexao))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.Add(new SqlParameter("@shipperId", id));
-
-                    using (var registro = comando.ExecuteReader())
-                    {
-                        if (registro.Read())
-                        {
-                            transportadora = Mapear(registro);
-                        }
-                    }
-                }
-            }
-
-            return transportadora;
+            return base.ExecuteReader("TransportadoraSelecionar", Mapear, new SqlParameter("@shipperId", id)).SingleOrDefault();
         }
 
         public void Inserir(Transportadora transportadora)
