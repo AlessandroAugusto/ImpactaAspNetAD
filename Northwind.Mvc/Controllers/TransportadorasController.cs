@@ -69,18 +69,19 @@ namespace Northwind.Mvc.Controllers
         }
 
         // GET: Transportadoras/Delete/5
-        public ActionResult Delete(int id)
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(int id)
         {
             return View(_repositorio.Selecionar(id));
         }
 
         // POST: Transportadoras/Delete/5
         [HttpPost]
-        public ActionResult Delete(Transportadora transportadora)
+        public ActionResult Delete(int id)
         {
             try
             {
-                _repositorio.Excluir(transportadora.Id);
+                _repositorio.Excluir(id);
 
                 return RedirectToAction("Index");
             }
