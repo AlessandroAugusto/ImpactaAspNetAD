@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 namespace Northwind.Repositorios.SqlServer.Ado.Tests
 {
     [TestClass()]
-    public class ProdutoRepositorioTests
+    public class produtoRepositorioTests
     {
-        ProdutoRepositorio _repositorio = new ProdutoRepositorio();
+
+        private ProdutoRepositorio _repositorio = new ProdutoRepositorio();
 
         [TestMethod()]
         public void SelecionarPorCategoriaTest()

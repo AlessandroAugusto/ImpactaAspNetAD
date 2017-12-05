@@ -12,14 +12,13 @@ namespace Northwind.WebForms
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
         }
 
         protected void criterioRadioButtonList_SelectedIndexChanged(object sender, EventArgs e)
         {
             //var rbl = (RadioButtonList)sender;
-            //criterioMultiview.ActiveViewIndex = criterioRadioButtonList.SelectedItem.Value;
-            //criterioMultiview.ActiveViewIndex = criterioRadioButtonList.SelectedValue;
-            criterioMultiview.ActiveViewIndex = criterioRadioButtonList.SelectedIndex;
+            criterioMultiView.ActiveViewIndex =Convert.ToInt32(criterioRadioButtonList.SelectedItem.Value);
 
             produtosGrid.DataSourceID = $"produtosPor{criterioRadioButtonList.SelectedItem.Text}DataSource";
         }

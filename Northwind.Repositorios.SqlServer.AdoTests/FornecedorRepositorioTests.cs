@@ -15,10 +15,9 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
         public void SelecionarTest()
         {
             var repositorio = new FornecedorRepositorio();
+            var fornecedorDataTable = repositorio.Selecionar();
 
-            var dataTable = repositorio.Selecionar();
-
-            Assert.IsTrue(dataTable.Rows.Count != 0);
+            Assert.AreNotEqual(0, fornecedorDataTable.Rows.Count);
         }
     }
 }

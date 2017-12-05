@@ -1,5 +1,4 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -7,22 +6,29 @@ namespace Northwind.Repositorios.SqlServer.Ado
 {
     public class RepositorioBase
     {
+
+
         public DataTable Selecionar(string instrucao, params SqlParameter[] parametros)
         {
             var dataTable = new DataTable();
             var stringConexao =
-                ConfigurationManager.ConnectionStrings["northwindConnectionString"].ConnectionString;
+                ConfigurationManager
+                .ConnectionStrings["NorthwindConnectionString"]
+                .ConnectionString;
+                //"Server=.\\SQLEXPRESS;Database=Northwind;Trusted_Connection=True";
 
             using (var conexao = new SqlConnection(stringConexao))
             {
+
+
                 conexao.Open();
 
-                //var instrucao = @"SELECT 
-                //                              [ProductName]
-                //                              ,[UnitPrice]
-                //                              ,[UnitsInStock]
-                //                          FROM [Northwind].[dbo].[Products]
-                //                          Where CategoryID = @CategoryID";
+                //var instrucao = $@"SELECT [ProductID]
+                //                  ,[ProductName]
+                //                  ,[UnitPrice]
+                //                  ,[UnitsInStock]
+                //                FROM [Northwind].[dbo].[Products]
+                //                WHERE CategoryID = @CategoryID";
 
                 using (var comando = new SqlCommand(instrucao, conexao))
                 {
@@ -38,7 +44,6 @@ namespace Northwind.Repositorios.SqlServer.Ado
                     }
                 }
 
-                //conexao.Close();
             }
 
             return dataTable;

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16C2E732-5F8B-4C0F-83F1-32506A61656A}</ProjectGuid>
+    <ProjectGuid>{90EF9AED-70BE-45AC-BBBD-EE4FB769B0F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Northwind.Repositorios.SqlServer.Ado</RootNamespace>
@@ -47,11 +47,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioBase.cs" />
     <Compile Include="RepositorioListBase.cs" />
-    <Compile Include="TransportadoraRepositorio.cs" />
+    <Compile Include="TrasportadoraRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Northwind.Dominio\Northwind.Dominio.csproj">
-      <Project>{59D29AE1-7139-42DD-AD88-E3149136E427}</Project>
+      <Project>{45405c03-b4d9-4e02-a75b-0f5fc0ff5fa7}</Project>
       <Name>Northwind.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
