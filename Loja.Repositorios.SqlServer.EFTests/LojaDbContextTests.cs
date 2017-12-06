@@ -123,7 +123,7 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
         }
 
         [TestMethod]
-        public void Include()
+        public void IncludeTeste()
         {
             var barbeador = _db.Produtos
                 .Include(p => p.Categoria)
@@ -145,7 +145,7 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
 
             var primeiro = query.First();//SELECT TOP
             //var ultimo = query.Last();//Não funciona no SQL Server
-            var unico = query.Single();
+            //var unico = query.Single();
             var todos = query.ToList();
         }
 

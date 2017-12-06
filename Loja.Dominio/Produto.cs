@@ -10,8 +10,10 @@ namespace Loja.Dominio
     {
         public int Id { get; set; }
         public virtual Categoria Categoria { get; set; }
+        public virtual ProdutoImagem Imagem { get; set; }
         public String Nome { get; set; }
         public Decimal Preco { get; set; }
         public int Estoque { get; set; }
+        public bool Ativo { get; set;  }
     }
 }

@@ -14,7 +14,9 @@ namespace Loja.Repositorios.SqlServer.EF
     {
         public LojaDbContext():base("name=lojaConnectionString")
         {
-
+            //Database.SetInitializer(new LojaDbInitializer());
+            
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LojaDbContext, Configuration>());
         }
 
         public DbSet<Produto> Produtos { get; set; }
@@ -29,6 +31,8 @@ namespace Loja.Repositorios.SqlServer.EF
             modelBuilder.Configurations.Add(new ProdutoConfiguration());
 
             modelBuilder.Configurations.Add(new CategoriaConfiguration());
+
+            modelBuilder.Configurations.Add(new ProdutoImagemConfiguration());
         }
 
     }

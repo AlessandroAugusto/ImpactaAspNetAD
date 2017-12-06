@@ -50,8 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LojaDbContext.cs" />
+    <Compile Include="LojaDbInitializer.cs" />
+    <Compile Include="Migrations\201712060006035_InitialCreate.cs" />
+    <Compile Include="Migrations\201712060006035_InitialCreate.Designer.cs">
+      <DependentUpon>201712060006035_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CategoriaConfiguration.cs" />
     <Compile Include="ModelConfiguration\ProdutoConfiguration.cs" />
+    <Compile Include="ModelConfiguration\ProdutoImagemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +70,11 @@
       <Project>{9075F3D0-2653-4AAB-A3C2-4E5E71EAEADE}</Project>
       <Name>Loja.Dominio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712060006035_InitialCreate.resx">
+      <DependentUpon>201712060006035_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

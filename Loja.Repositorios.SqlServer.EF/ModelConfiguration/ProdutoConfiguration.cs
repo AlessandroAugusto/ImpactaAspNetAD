@@ -17,6 +17,8 @@ namespace Loja.Repositorios.SqlServer.EF.ModelConfiguration
                 .HasPrecision(9, 2) ;
 
             HasRequired(p => p.Categoria);
+
+            HasOptional(p => p.Imagem).WithRequired(pi => pi.Produto).WillCascadeOnDelete(true);
                 
         }
     }
