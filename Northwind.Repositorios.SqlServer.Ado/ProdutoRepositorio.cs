@@ -7,36 +7,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Northwind.Repositorios.SqlServer.Ado
 {
     public class ProdutoRepositorio : RepositorioBase
     {
-        //Todo: refatorar para usar o base.selecionar
+        //Todo: refatorar para usar o base.Selecionar()
         public DataTable SelecionarPorCategoria(int categoriaId)
         {
-            var instrucao = $@"SELECT [ProductID]
-                                  ,[ProductName]
-                                  ,[UnitPrice]
-                                  ,[UnitsInStock]
-                                FROM [Northwind].[dbo].[Products]
-                                WHERE CategoryID = @CategoryID";
+            var produtoDataTable = new DataTable();
+            var stringConexao =
+                ConfigurationManager.ConnectionStrings["northwindConnectionString"].ConnectionString;
 
-            return Selecionar(instrucao, new SqlParameter("@CategoryID", categoriaId));
+            using (var conexao = new SqlConnection(stringConexao))
+            {
+                conexao.Open();
+
+                var instrucao = @"SELECT 
+                                              [ProductName]
+                                              ,[UnitPrice]
+                                              ,[UnitsInStock]
+                                          FROM [Northwind].[dbo].[Products]
+                                          Where CategoryID = @CategoryID";
+
+                using (var comando = new SqlCommand(instrucao, conexao))
+                {
+                    comando.Parameters.AddWithValue("@CategoryID", categoriaId);
+
+                    using (var dataAdapter = new SqlDataAdapter(comando))
+                    {
+                        dataAdapter.Fill(produtoDataTable);
+                    }
+                }
+
+                //conexao.Close();
+            }
+
+            return produtoDataTable;
         }
 
         public DataTable SelecionarPorFornecedor(int fornecedorId)
         {
+            var instrucao = @"SELECT 
+                                              [ProductName]
+                                              ,[UnitPrice]
+                                              ,[UnitsInStock]
+                                          FROM [Northwind].[dbo].[Products]
+                                          Where SupplierId = @SupplierId";
 
-            var instrucao = $@"SELECT [ProductID]
-                                  ,[ProductName]
-                                  ,[UnitPrice]
-                                  ,[UnitsInStock]
-                                FROM [Northwind].[dbo].[Products]
-                                WHERE SupplierID = @SupplierID";
+            //var parametros = new SqlParameter[1];
+            //parametros[0] = new SqlParameter("SupplierId", fornecedorId);
 
-            return Selecionar(instrucao, new SqlParameter("@SupplierID", fornecedorId));
+            return base.Selecionar(instrucao, 
+                new SqlParameter("SupplierId", fornecedorId));
         }
-
     }
 }

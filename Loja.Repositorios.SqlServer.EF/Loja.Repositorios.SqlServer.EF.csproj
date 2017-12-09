@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F3576038-BB12-43F6-B68A-26BECA72BEAF}</ProjectGuid>
+    <ProjectGuid>{3B2E3FDE-90AD-4BC2-8075-823A192084C3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Loja.Repositorios.SqlServer.EF</RootNamespace>
@@ -51,15 +51,28 @@
   <ItemGroup>
     <Compile Include="LojaDbContext.cs" />
     <Compile Include="LojaDbInitializer.cs" />
-    <Compile Include="Migrations\201712060006035_InitialCreate.cs" />
-    <Compile Include="Migrations\201712060006035_InitialCreate.Designer.cs">
-      <DependentUpon>201712060006035_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201712060006443_InitialCreate.cs" />
+    <Compile Include="Migrations\201712060006443_InitialCreate.Designer.cs">
+      <DependentUpon>201712060006443_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712062130527_AdicionarProdutoImagem.cs" />
+    <Compile Include="Migrations\201712062130527_AdicionarProdutoImagem.Designer.cs">
+      <DependentUpon>201712062130527_AdicionarProdutoImagem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712082244581_CreateProcedureTeste.cs" />
+    <Compile Include="Migrations\201712082244581_CreateProcedureTeste.Designer.cs">
+      <DependentUpon>201712082244581_CreateProcedureTeste.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelConfiguration\CategoriaConfiguration.cs" />
     <Compile Include="ModelConfiguration\ProdutoConfiguration.cs" />
     <Compile Include="ModelConfiguration\ProdutoImagemConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,13 +80,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Loja.Dominio\Loja.Dominio.csproj">
-      <Project>{9075F3D0-2653-4AAB-A3C2-4E5E71EAEADE}</Project>
+      <Project>{01720427-46B5-4115-B309-12787EE78021}</Project>
       <Name>Loja.Dominio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712060006035_InitialCreate.resx">
-      <DependentUpon>201712060006035_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712060006443_InitialCreate.resx">
+      <DependentUpon>201712060006443_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712062130527_AdicionarProdutoImagem.resx">
+      <DependentUpon>201712062130527_AdicionarProdutoImagem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712082244581_CreateProcedureTeste.resx">
+      <DependentUpon>201712082244581_CreateProcedureTeste.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

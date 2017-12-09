@@ -10,7 +10,6 @@ namespace Loja.Repositorios.SqlServer.EF.ModelConfiguration
             Property(c => c.Nome)
                 .IsRequired()
                 .HasMaxLength(50);
-                
         }
     }
 }

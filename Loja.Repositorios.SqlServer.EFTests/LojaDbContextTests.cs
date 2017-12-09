@@ -16,7 +16,6 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
     {
         private static LojaDbContext _db = new LojaDbContext();
 
-
         [ClassInitialize]
         public static void InicializarTestes(TestContext contexto)
         {
@@ -33,74 +32,62 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
         {
             using (var db = new LojaDbContext())
             {
-                if (!db.Produtos.Any(p => p.Nome == "Caneta"))
+                if (!db.Categorias.Any(c => c.Nome == "Papelaria"))
                 {
-                    var papelaria = new Categoria()
-                    {
-                        Nome = "Papelaria"
-                    };
+                    var papelaria = new Categoria();
+                    papelaria.Nome = "Papelaria";
 
                     db.Categorias.Add(papelaria);
-                    db.SaveChanges();
+
+                    db.SaveChanges(); 
                 }
             }
 
-            InserirProduto();
-            EditarProduto();
-            ExcluirProduto();
-
+            InserirProdutoTeste();
+            EditarProdutoTeste();
+            ExcluirProdutoTeste();
         }
-
-        public void InserirProduto()
+        
+        public void InserirProdutoTeste()
         {
-            var caneta = new Produto()
-            {
-                Nome = "Caneta",
-                Estoque = 5,
-                Preco = 22.06m,
-                Categoria = _db.Categorias
-                    .Where(c => c.Nome == "Papelaria")
-                    .Single()
-            };
+            var caneta = new Produto();
+            caneta.Estoque = 5;
+            caneta.Nome = "Caneta";
+            caneta.Preco = 22.06m;
+            caneta.Categoria = _db.Categorias
+                .Where(c => c.Nome == "Papelaria").Single();
 
             _db.Produtos.Add(caneta);
             _db.SaveChanges();
         }
 
-
         [TestMethod]
-        public void InsererProdutoComNovaCategoria()
+        public void InserirProdutoComNovaCategoriaTeste()
         {
             if (!_db.Produtos.Any(p => p.Nome == "Barbeador"))
             {
-                var barbeador = new Produto()
-                {
-                    Nome = "Barbeador",
-                    Estoque = 20,
-                    Preco = 35.45m,
-                    Categoria = new Categoria { Nome = "Perfumaria" }
-                };
+                var barbeador = new Produto();
+                barbeador.Nome = "Barbeador";
+                barbeador.Estoque = 33;
+                barbeador.Preco = 22.34m;
+                barbeador.Categoria = new Categoria { Nome = "Perfumaria" };
 
                 _db.Produtos.Add(barbeador);
-                _db.SaveChanges();
+                _db.SaveChanges(); 
             }
-
         }
-
-        public void EditarProduto()
+                
+        public void EditarProdutoTeste()
         {
             var caneta = _db.Produtos.Single(p => p.Nome == "Caneta");
-            caneta.Preco = 44;
-
+            caneta.Preco = 51;
             _db.SaveChanges();
-
         }
-
-        public void ExcluirProduto()
+                
+        public void ExcluirProdutoTeste()
         {
             var caneta = _db.Produtos.Single(p => p.Nome == "Caneta");
             _db.Produtos.Remove(caneta);
-
             _db.SaveChanges();
 
             Assert.IsFalse(_db.Produtos.Any(p => p.Nome == "Caneta"));
@@ -109,16 +96,22 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
         [TestMethod]
         public void LazyLoadDesligadoTeste()
         {
-            //Usar modificador virtual para a propriedade Categoria
-            var barbeador = _db.Produtos.Single(p => p.Nome == "Barbeador");
-            Assert.IsNull(barbeador.Categoria);
+            // usar modificador virtual 
+            //para a propriedade Categoria.
+
+            //var barbeador = _db.Produtos.Single(p => p.Nome == "Barbeador");
+
+            //Assert.IsNull(barbeador.Categoria);
         }
 
         [TestMethod]
         public void LazyLoadLigadoTeste()
         {
-            //Usar modificador virtual para a propriedade Categoria
+            // usar modificador virtual 
+            //para a propriedade Categoria.
+
             var barbeador = _db.Produtos.Single(p => p.Nome == "Barbeador");
+
             Assert.AreEqual(barbeador.Categoria.Nome, "Perfumaria");
         }
 
@@ -128,6 +121,7 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
             var barbeador = _db.Produtos
                 .Include(p => p.Categoria)
                 .Single(p => p.Nome == "Barbeador");
+
             Assert.AreEqual(barbeador.Categoria.Nome, "Perfumaria");
         }
 
@@ -138,13 +132,13 @@ namespace Loja.Repositorios.SqlServer.EF.Tests
 
             if (true)
             {
-                query = query.Where(p => p.Estoque> 5);
+                query = query.Where(p => p.Estoque > 5);
             }
 
-            query.OrderBy(p => p.Preco);
+            query = query.OrderByDescending(p => p.Preco);
 
-            var primeiro = query.First();//SELECT TOP
-            //var ultimo = query.Last();//Não funciona no SQL Server
+            var primeiro = query.First();
+            //var ultimo = query.AsEnumerable().Last();
             //var unico = query.Single();
             var todos = query.ToList();
         }

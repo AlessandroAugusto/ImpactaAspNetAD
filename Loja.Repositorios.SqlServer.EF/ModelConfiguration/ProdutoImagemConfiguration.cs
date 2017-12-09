@@ -9,7 +9,9 @@ namespace Loja.Repositorios.SqlServer.EF.ModelConfiguration
         {
             HasKey(pi => pi.ProdutoId);
 
-            Property(pi => pi.ContentType).IsRequired().HasMaxLength(50);
+            Property(pi => pi.ContentType)
+                .IsRequired()
+                .HasMaxLength(50);
         }
     }
 }

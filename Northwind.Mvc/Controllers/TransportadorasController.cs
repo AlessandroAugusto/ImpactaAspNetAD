@@ -12,25 +12,25 @@ namespace Northwind.Mvc.Controllers
     {
         TransportadoraRepositorio _repositorio = new TransportadoraRepositorio();
 
-        // GET: Transportadoras
+        // GET: Produtos
         public ActionResult Index()
         {
             return View(_repositorio.Selecionar());
         }
 
-        // GET: Transportadoras/Details/5
+        // GET: Produtos/Details/5
         public ActionResult Details(int id)
         {
             return View(_repositorio.Selecionar(id));
         }
 
-        // GET: Transportadoras/Create
+        // GET: Produtos/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Transportadoras/Create
+        // POST: Produtos/Create
         [HttpPost]
         public ActionResult Create(Transportadora transportadora)
         {
@@ -46,13 +46,13 @@ namespace Northwind.Mvc.Controllers
             }
         }
 
-        // GET: Transportadoras/Edit/5
+        // GET: Produtos/Edit/5
         public ActionResult Edit(int id)
         {
             return View(_repositorio.Selecionar(id));
         }
 
-        // POST: Transportadoras/Edit/5
+        // POST: Produtos/Edit/5
         [HttpPost]
         public ActionResult Edit(Transportadora transportadora)
         {
@@ -68,19 +68,20 @@ namespace Northwind.Mvc.Controllers
             }
         }
 
-        // GET: Transportadoras/Delete/5
-        public ActionResult Delete(int id)
+        // GET: Produtos/Delete/5
+        [ActionName("Delete")]
+        public ActionResult DeleteConfirm(int id)
         {
             return View(_repositorio.Selecionar(id));
         }
 
-        // POST: Transportadoras/Delete/5
+        // POST: Produtos/Delete/5
         [HttpPost]
-        public ActionResult Delete(Transportadora transportadora)
+        public ActionResult Delete(int id)
         {
             try
             {
-                _repositorio.Excluir(transportadora.Id);
+                _repositorio.Excluir(id);
 
                 return RedirectToAction("Index");
             }

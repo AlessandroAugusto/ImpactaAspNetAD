@@ -13,13 +13,13 @@ namespace Loja.Repositorios.SqlServer.EF.ModelConfiguration
                 .HasColumnType("nvarchar");
 
             Property(p => p.Preco)
-                .IsRequired()
-                .HasPrecision(9, 2) ;
+                .HasPrecision(9, 2);
 
             HasRequired(p => p.Categoria);
 
-            HasOptional(p => p.Imagem).WithRequired(pi => pi.Produto).WillCascadeOnDelete(true);
-                
+            HasOptional(p => p.Imagem)
+                .WithRequired(pi => pi.Produto)
+                .WillCascadeOnDelete(true);
         }
     }
 }

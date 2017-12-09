@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Northwind.Dominio;
-using Northwind.Repositorios.SqlServer.Ado;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Northwind.Repositorios.SqlServer.Ado.Tests
 {
@@ -41,23 +36,22 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
         public void CudTest()
         {
             var transportadora = new Transportadora();
-            transportadora.Nome = "HorizonExpress";
-            transportadora.Telefone = "551199999999";
-            
+            transportadora.Nome = "Correios";
+            transportadora.Telefone = "1111 2222";
+
             _repositorio.Inserir(transportadora);
             Assert.IsTrue(transportadora.Id > 0);
 
-            transportadora.Nome = "Correios";
-            transportadora.Telefone = "(503) 555-9932";
+            transportadora.Nome = "Correios Editado";
             _repositorio.Atualizar(transportadora);
 
             transportadora = _repositorio.Selecionar(transportadora.Id);
-            Assert.AreEqual("Correios", transportadora.Nome);
+            Assert.AreEqual("Correios Editado", transportadora.Nome);
 
             _repositorio.Excluir(transportadora.Id);
             transportadora = _repositorio.Selecionar(transportadora.Id);
-            Assert.IsNull(transportadora);
 
+            Assert.IsNull(transportadora);
         }
     }
 }

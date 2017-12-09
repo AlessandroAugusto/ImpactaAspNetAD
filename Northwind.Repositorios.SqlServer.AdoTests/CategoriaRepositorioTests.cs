@@ -15,15 +15,15 @@ namespace Northwind.Repositorios.SqlServer.Ado.Tests
         [TestMethod()]
         public void SelecionarTest()
         {
-            var repositorio = 
-                new CategoriaRepositorio();
+            var repositorio = new CategoriaRepositorio();
+
             var categoriaDataTable = repositorio.Selecionar();
 
-            Assert.AreNotEqual(0,categoriaDataTable.Rows.Count);
+            Assert.AreNotEqual(0, categoriaDataTable.Rows.Count);
 
             foreach (DataRow registro in categoriaDataTable.Rows)
             {
-                Console.WriteLine($"{registro["CategoryID"]} - {registro["CategoryName"]}");
+                Console.WriteLine($"{registro["CategoryID"]} - {registro[1]}");
             }
         }
     }

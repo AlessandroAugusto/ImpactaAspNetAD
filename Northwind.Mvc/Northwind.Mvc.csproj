@@ -9,7 +9,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6D81B28-4B12-483C-A816-A2D9D0AFD714}</ProjectGuid>
+    <ProjectGuid>{2299EBC2-3125-45B5-A060-5415CB617D8E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -182,11 +182,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Northwind.Dominio\Northwind.Dominio.csproj">
-      <Project>{45405c03-b4d9-4e02-a75b-0f5fc0ff5fa7}</Project>
+      <Project>{59d29ae1-7139-42dd-ad88-e3149136e427}</Project>
       <Name>Northwind.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Northwind.Repositorios.SqlServer.Ado\Northwind.Repositorios.SqlServer.Ado.csproj">
-      <Project>{90ef9aed-70be-45ac-bbbd-ee4fb769b0f2}</Project>
+      <Project>{16c2e732-5f8b-4c0f-83f1-32506a61656a}</Project>
       <Name>Northwind.Repositorios.SqlServer.Ado</Name>
     </ProjectReference>
   </ItemGroup>
@@ -206,9 +206,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>4115</DevelopmentServerPort>
+          <DevelopmentServerPort>2545</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4115/</IISUrl>
+          <IISUrl>http://localhost:2545/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

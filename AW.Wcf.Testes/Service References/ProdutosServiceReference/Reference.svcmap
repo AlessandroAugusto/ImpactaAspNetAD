@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8d4452ec-e0da-4633-872c-8808450e3c43" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3486/Produtos.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Produtos.wsdl" MetadataType="Wsdl" ID="efc3f454-f3fe-4c06-ad03-b18f9dec0323" SourceId="1" SourceUrl="http://localhost:3486/Produtos.svc?wsdl" />
+    <MetadataFile FileName="Produtos.xsd" MetadataType="Schema" ID="50dade8f-6fa5-4e36-89f0-99170ad89cf5" SourceId="1" SourceUrl="http://localhost:3486/Produtos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Produtos1.xsd" MetadataType="Schema" ID="8bb522a5-a37e-4c2c-b20d-b15859ae7522" SourceId="1" SourceUrl="http://localhost:3486/Produtos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Produtos2.xsd" MetadataType="Schema" ID="a61c7a0b-df72-415f-acd8-929dced2f445" SourceId="1" SourceUrl="http://localhost:3486/Produtos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Produtos.disco" MetadataType="Disco" ID="ecf5071d-69d4-4faa-a698-65f9ecf1594a" SourceId="1" SourceUrl="http://localhost:3486/Produtos.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

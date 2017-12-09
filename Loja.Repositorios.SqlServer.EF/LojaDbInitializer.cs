@@ -6,13 +6,14 @@ using System.Linq;
 
 namespace Loja.Repositorios.SqlServer.EF
 {
-    //Pg 191 - Mostra as possiveis formas de iniciar o banco de dados
+    //pg 191
     internal class LojaDbInitializer : DropCreateDatabaseIfModelChanges<LojaDbContext>
     {
         protected override void Seed(LojaDbContext context)
         {
             context.Categorias.AddRange(ObterCategorias());
             context.SaveChanges();
+
             context.Produtos.AddRange(ObterProdutos(context));
             context.SaveChanges();
         }
@@ -24,24 +25,25 @@ namespace Loja.Repositorios.SqlServer.EF
             grampeador.Estoque = 44;
             grampeador.Nome = "Grampeador";
             grampeador.Preco = 21.44m;
-            grampeador.Categoria = context.Categorias.Single(c => c.Nome == "Papelaria");
+            grampeador.Categoria = context
+                                                    .Categorias.Single(c => c.Nome == "Papelaria");
 
             var penDrive = new Produto();
             penDrive.Ativo = false;
             penDrive.Estoque = 49;
             penDrive.Nome = "Pen drive";
             penDrive.Preco = 21.49m;
-            penDrive.Categoria = context.Categorias.Single(c => c.Nome == "Informática");
+            penDrive.Categoria = context
+                                                    .Categorias.Single(c => c.Nome == "Informática");
 
             return new List<Produto> { grampeador, penDrive };
-
         }
 
         private IEnumerable<Categoria> ObterCategorias()
         {
             return new List<Categoria>
             {
-                new Categoria { Nome = "Papelaria"},
+                new Categoria { Nome = "Papelaria" },
                 new Categoria { Nome = "Informática" }
             };
         }

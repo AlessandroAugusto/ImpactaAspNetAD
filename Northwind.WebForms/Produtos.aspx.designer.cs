@@ -22,13 +22,13 @@ namespace Northwind.WebForms {
         protected global::System.Web.UI.WebControls.RadioButtonList criterioRadioButtonList;
         
         /// <summary>
-        /// criterioMultiView control.
+        /// criterioMultiview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView criterioMultiView;
+        protected global::System.Web.UI.WebControls.MultiView criterioMultiview;
         
         /// <summary>
         /// categoriaView control.

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A21EEAB8-F271-4BFC-B41F-DB94B38CCEB7}</ProjectGuid>
+    <ProjectGuid>{C29E604B-9879-4092-9769-9EF364C25D94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Loja.Repositorios.SqlServer.EFTests</RootNamespace>
@@ -65,11 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Loja.Dominio\Loja.Dominio.csproj">
-      <Project>{9075F3D0-2653-4AAB-A3C2-4E5E71EAEADE}</Project>
+      <Project>{01720427-46B5-4115-B309-12787EE78021}</Project>
       <Name>Loja.Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\Loja.Repositorios.SqlServer.EF\Loja.Repositorios.SqlServer.EF.csproj">
-      <Project>{F3576038-BB12-43F6-B68A-26BECA72BEAF}</Project>
+      <Project>{3B2E3FDE-90AD-4BC2-8075-823A192084C3}</Project>
       <Name>Loja.Repositorios.SqlServer.EF</Name>
     </ProjectReference>
   </ItemGroup>
